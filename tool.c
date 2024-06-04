@@ -13,7 +13,6 @@ void printfStudent(char printname[10],Student* student1, int studentCount) {
 
 void generateRandomData(Student students[], int count) {
         srand(time(NULL)); // Seed the random number generator
-
         for (int i = 0; i < count; i++) {
             sprintf(students[i].studentID, "%05d", rand()%1000+1); // Generate a random student ID between 1 and 1000
             sprintf(students[i].name, "Student %d", i+1); // Generate a student name
