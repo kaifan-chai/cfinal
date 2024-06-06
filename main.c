@@ -16,6 +16,7 @@ int main() {
     
     //原始資料
     printfStudent("原始資料", student1,  studentCount);
+    
     // 以系級排序
     sortStudentbyDepartment(student1, studentCount);
     printfStudent("以系級排序", student1,  studentCount);

@@ -3,7 +3,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-void printfStudent(char printname[10],Student* student1, int studentCount) {
+void printfStudent(char printname[],Student* student1, int studentCount) {
     printf("\n\n%s\nDepartment\tName\t\tStudentID\tGrade\n", printname);
     printf("------------------------------------------------------\n");
     for (int i = 0; i < studentCount; i++) {

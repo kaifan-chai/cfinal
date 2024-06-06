@@ -10,7 +10,7 @@ typedef struct  {
 } Student ;
 
 void generateRandomData(Student students[], int count);
-void printfStudent(char printname[10],Student* student1, int studentCount);
+void printfStudent(char printname[],Student* student1, int studentCount);
 void sortStudentbyDepartment(Student* student, int studentCount);
 void sortStudentbyName(Student* student, int studentCount);
 void sortStudentbyStudentID(Student* student, int studentCount);
