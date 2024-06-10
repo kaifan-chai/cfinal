@@ -7,7 +7,7 @@
             "args": [
                 "-fdiagnostics-color=always",
                 "-g",
-                "*.c",
+                "${fileDirname}\\*.c",
                 "-o",
                 "${fileDirname}\\main.exe"
             ],
