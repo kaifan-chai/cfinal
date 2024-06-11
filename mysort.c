@@ -34,6 +34,43 @@ int compareName(const void* a, const void* b) {
     int numberB = atoi(strB + 7);
      return numberA - numberB;
 }
+//compareHomework
+int compareHomework(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->homework - studentB->homework;
+}
+//compareQuiz
+int compareQuiz(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->quiz - studentB->quiz;
+}
+//compareMidterm
+int compareMidterm(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->midterm - studentB->midterm;
+}
+//compareFinal
+int compareFinal(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->final - studentB->final;
+}
+//compareOther
+int compareOther(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->other - studentB->other;
+}
+//compareTotal
+int compareTotal(const void* a, const void* b) {
+    StudentRecord* studentA = (StudentRecord*)a;
+    StudentRecord* studentB = (StudentRecord*)b;
+    return studentA->total - studentB->total;
+}
+
 
 void sortStudentbyDepartment(Student* student, int studentCount) {
     qsort(student, studentCount, sizeof(Student), compareDepartment);
@@ -49,4 +86,20 @@ void sortStudentbyStudentID(Student* student, int studentCount) {
 
 void sortStudentbygrade(Student* student, int studentCount) {
     qsort(student, studentCount, sizeof(Student), comparegrade);
+}
+
+void sortStudentRecord(StudentRecord* student, int studentCount, const char* sortType) {
+    if (strcmp(sortType, "homework") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareHomework);
+    } else if (strcmp(sortType, "quiz") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareQuiz);
+    } else if (strcmp(sortType, "midterm") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareMidterm);
+    } else if (strcmp(sortType, "final") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareFinal);
+    } else if (strcmp(sortType, "other") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareOther);
+    } else if (strcmp(sortType, "total") == 0) {
+        qsort(student, studentCount, sizeof(StudentRecord), compareTotal);
+    }
 }
