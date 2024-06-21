@@ -49,3 +49,20 @@ void generateRandomData(Student students[], int count) {
             students[i].grade = rand() % 4+1; // Generate a random grade between 0 and 100
         }
 }
+
+//學生各項成績平均
+void average_records(StudentRecord* student1, int studentCount) {
+    float sumHomework = 0, sumQuiz = 0, sumMidterm = 0, sumFinal = 0, sumOther = 0, sumTotal = 0;
+    for (int i = 0; i < studentCount; i++) {
+        sumHomework += student1[i].homework;
+        sumQuiz += student1[i].quiz;
+        sumMidterm += student1[i].midterm;
+        sumFinal += student1[i].final;
+        sumOther += student1[i].other;
+        sumTotal += student1[i].total;
+    }
+    printf("\n\n%s\n%-12s %-9s %-10s %-10s %-10s %-10s\n", "average records", "Homework", "Quiz", "Midterm", "Final", "Other", "Total");
+    printf("-------------------------------------------------------------\n");
+    printf("%8.1f %8.1f %12.1f %8.1f %10.1f %10.1f\n", sumHomework/studentCount, sumQuiz/studentCount, sumMidterm/studentCount, sumFinal/studentCount, sumOther/studentCount, sumTotal/studentCount);
+    
+}

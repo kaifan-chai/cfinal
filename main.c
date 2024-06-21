@@ -3,9 +3,31 @@
 #include "myhead.h"
 #define studentCount 100
 
-void sortMenu(StudentRecord student1[], int StudentNum) {
+float sorttype = 1;
+
+
+int sortType(){
     int choice;
 
+    while(1){
+        printf("\nSort Type:\n");
+        printf("1. Ascending\n");
+        printf("2. Descending\n");
+        printf("Enter your choice: ");
+        scanf("%d", &choice);
+        if(choice == 1){
+            return Ascending;
+        }else if(choice == 2){
+            return Descending;
+        }else{
+            printf("Invalid choice. Please enter a number between 1 and 2.\n");
+        }
+    }
+}
+
+void sortMenu(StudentRecord student1[], int StudentNum) {
+    sorttype = sortType();
+    int choice;
     while(1) {
         printf("\nSort Menu:\n");
         printf("1. Sort by homework\n");
@@ -55,10 +77,12 @@ void sortMenu(StudentRecord student1[], int StudentNum) {
 
 void searchStudent(StudentRecord student1[], int StudentNum) {
     char studentID[50]; // Change the data type to a character array
+    printf("--------------------\n");
     printf("Enter the student ID you want to search for: ");
     scanf("%s", studentID); // Remove the '&' operator before studentID
     for(int i = 0; i < StudentNum; i++) {
         if(strcmp(student1[i].student.studentID, studentID) == 0) {
+            printf("--------------------\n");
             printf("Student found:\n");
             printfStudentRecord("Student record", &student1[i], 1);
             return;
@@ -77,17 +101,20 @@ void mainMenu(StudentRecord student1[], int StudentNum) {
         printf("2. Print records\n");
         printf("3. Sort records\n");
         printf("4. Search student\n");
-        printf("5. Exit\n");
+        printf("5. Average records\n");
+        printf("6. Exit\n");
         printf("Enter your choice: ");
         scanf("%d", &choice);
 
         switch(choice) {
             case 1:
                 StudentNum = readStudentRecordFormCSV("recerds.csv", student1, studentCount);
+                printf("--------------------\n");
                 printf("Read %d records.\n", StudentNum);
                 break;
             case 2:  
                 if(strcmp(student1[0].student.name, "") == 0){
+                    printf("--------------------\n");
                     printf("Please read records first.\n");
                     break;  
                 }else{
@@ -96,15 +123,37 @@ void mainMenu(StudentRecord student1[], int StudentNum) {
                 }
                          
             case 3:
-                sortMenu(student1, StudentNum);
-                break;
+                if(strcmp(student1[0].student.name, "") == 0){
+                    printf("--------------------\n");
+                    printf("Please read records first.\n");
+                    break;
+                }else{
+                    sortMenu(student1, StudentNum);
+                    break;
+                }
             case 4:
-                searchStudent(student1, StudentNum);
-                break;
+                if(strcmp(student1[0].student.name, "") == 0){
+                    printf("--------------------\n");
+                    printf("Please read records first.\n");
+                    break;
+                }else{
+                    searchStudent(student1, StudentNum);
+                    break;
+                }
             case 5:
+                if(strcmp(student1[0].student.name, "") == 0){
+                    printf("--------------------\n");
+                    printf("Please read records first.\n");
+                    break;
+                }else{
+                    average_records(student1, StudentNum);
+                    break;
+                }
+            case 6:
                 return;
             default:
-                printf("Invalid choice. Please enter a number between 1 and 5.\n");
+                printf("--------------------\n");
+                printf("Invalid choice. Please enter a number between 1 and 6.\n");
         }
     }
 }

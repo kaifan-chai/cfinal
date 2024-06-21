@@ -1,6 +1,7 @@
 #ifndef MYHEAD_H
 #define MYHEAD_H
 
+extern float sorttype;
 // Your code goes here
 typedef struct  {
     char studentID[50];
@@ -15,6 +16,8 @@ typedef struct {
     float homework, quiz, midterm, final, other, total; 
 } StudentRecord;
 
+#define Ascending 1 //升序排序：Ascending order
+#define Descending -1 //降序排序：Descending order
 #define homeworkWeight 0.2
 #define quizWeight 0.1
 #define midtermWeight 0.3
@@ -60,4 +63,6 @@ int compareFinal(const void* a, const void* b);
 int compareOther(const void* a, const void* b);
 //比較總分
 int compareTotal(const void* a, const void* b);
+//學生各項成績平均
+void average_records(StudentRecord* student1, int studentCount);
 #endif // MYHEAD_H

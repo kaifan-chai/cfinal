@@ -3,6 +3,7 @@
 #include <string.h>
 #include <stdlib.h>
 
+
 int compareStudentID(const void* a, const void* b) {
         Student* studentA = (Student*)a;
         Student* studentB = (Student*)b;
@@ -38,37 +39,37 @@ int compareName(const void* a, const void* b) {
 int compareHomework(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->homework - studentB->homework;
+    return (studentA->homework - studentB->homework)*sorttype;
 }
 //compareQuiz
 int compareQuiz(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->quiz - studentB->quiz;
+    return (studentA->quiz - studentB->quiz)*sorttype;
 }
 //compareMidterm
 int compareMidterm(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->midterm - studentB->midterm;
+    return (studentA->midterm - studentB->midterm)*sorttype;
 }
 //compareFinal
 int compareFinal(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->final - studentB->final;
+    return (studentA->final - studentB->final)*sorttype;
 }
 //compareOther
 int compareOther(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->other - studentB->other;
+    return (studentA->other - studentB->other)*sorttype;
 }
 //compareTotal
 int compareTotal(const void* a, const void* b) {
     StudentRecord* studentA = (StudentRecord*)a;
     StudentRecord* studentB = (StudentRecord*)b;
-    return studentA->total - studentB->total;
+    return (studentA->total - studentB->total)*sorttype;
 }
 
 
@@ -86,7 +87,7 @@ void sortStudentbyStudentID(Student* student, int studentCount) {
 
 void sortStudentbygrade(Student* student, int studentCount) {
     qsort(student, studentCount, sizeof(Student), comparegrade);
-}
+}   
 
 void sortStudentRecord(StudentRecord* student, int studentCount, const char* sortType) {
     if (strcmp(sortType, "homework") == 0) {
