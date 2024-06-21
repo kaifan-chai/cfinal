@@ -21,6 +21,7 @@ typedef struct {
 #define finalWeight 0.3
 #define otherWeight 0.1
 
+
 //讀取學生資料
 int readStudentRecordFormCSV(char* filename, StudentRecord* student1, int studentCount);
 //印出學生資料
